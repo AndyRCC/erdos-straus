@@ -2,6 +2,8 @@
 
 **Andy Casafranca** · noviembre de 2026
 
+[![DOI](https://zenodo.org/badge/github/1473563897.svg)](https://doi.org/10.5281/zenodo.24569380)
+
 > **English summary.** Notes on the (still open) Erdős–Straus conjecture 4/n = 1/x + 1/y + 1/z.
 > **Theorem.** For every c ≡ 3 (mod 4), the number of primes n ≤ N for which the shift c fails (no Type I or Type II solution with first denominator x = (n+c)/4) is ≍ N(log N)^{−3/2}. This extends Dahan's Theorem 4.15 (c = 7, arXiv:2608.24035) and settles the case c = 3, which was left open. It follows from Fuchs–Hsu–Rickards–Schindler–Stange (arXiv:2504.20289) applied to the form of discriminant −3.
 > **Conditional results.** Dickson's prime k-tuples conjecture implies that the first working shift m(p) is unbounded. Bunyakovsky's conjecture for a single explicit quadratic implies m(p) ≥ 15 infinitely often; that quadratic is built from the congruent-number curve y² = x³ − 231²x.
@@ -49,6 +51,12 @@ codigo/verificacion/   comprobaciones independientes (sympy y numpy)
 datos/                 tablas agregadas, gráficos y el certificado de E_231
 referencias/README.md  bibliografía con enlaces (los PDFs no se incluyen)
 ```
+
+## Cómo citar
+
+Andy Casafranca (2026). *Erdős–Straus conjecture: blind shifts, conditional results and computations* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.24569380
+
+Los metadatos están en [`CITATION.cff`](CITATION.cff).
 
 ## Licencia
 
