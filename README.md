@@ -2,7 +2,7 @@
 
 **Andy Casafranca** · November 2026
 
-[![DOI](https://zenodo.org/badge/github/1473563897.svg)](https://doi.org/10.5281/zenodo.24569380)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24569380.svg)](https://doi.org/10.5281/zenodo.24569380)
 
 **The conjecture (1948):** for every `n ≥ 2` there are positive integers `x, y, z` with `4/n = 1/x + 1/y + 1/z`. It is still open and has been verified up to `10^18`. This repository does **not** prove it.
 
