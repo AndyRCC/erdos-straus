@@ -8,7 +8,7 @@
 > **(1)** We replicate exactly, and extend from $2\cdot 10^7$ to $10^9$, Dahan's numerical experiments (arXiv:2608.24035) on the exceptional set $E_1(N;J)$. The local slopes of $\log(|E_1|/\pi)$ against $\log\log n$ come within 5 % of the sieve exponent $-J/2$ of his Theorem 4.3 for $J \le 6$; this could not be seen in his data. On the other hand, the ratio $\beta/\log n$ of his second heuristic regime is **not** constant.
 > **(2)** The slice of type II solutions "with $a = 1$" in the Aigner / Elsholtz–Tao parametrization, which is the row $u = 1$ of Dahan's grid, has exactly **three** exceptions below $10^9$: $193$, $2521$ and $66\,529$. We also give an exhaustive procedure of cost $O(\sqrt p \log p)$ to decide that slice.
 > We add an explicit example (§6): the surface of $8/241$ has no Brauer–Manin obstruction, and yet $8/241$ is not a sum of three unit fractions. It shows why a proof has to use the numerator 4 quantitatively.
-> Finally (§7), we ran a targeted search for counterexamples **above $10^{18}$**, up to $10^{43}$. We ran it on primes built to look like a square: quadratic residues modulo every prime $q \le Y$, with $Y \le 101$. They are measurably harder than random primes, but all 1620 primes tried have a solution, checked in exact arithmetic.
+> Finally (§7), we ran a targeted search for counterexamples **above $10^{18}$**, up to $10^{43}$. We ran it on primes built to look like a square: quadratic residues modulo every prime $q \le Y$, with $Y \le 101$. They are measurably harder than random primes, but all 1600 primes tried (1120 of this kind and 480 controls) have a solution, checked in exact arithmetic.
 >
 > **This is not progress towards a proof.** The conjecture remains open.
 
@@ -82,7 +82,7 @@ In that case $e \equiv 3 \pmod 4$ and $e \le (p+4)/3$ hold automatically, and th
 *Proof.* From $4bd = p + e$ and $ce = b + 1$ we get (iii). Conversely, (iii) gives $b := ce - 1 \ge 1$ and $4bd = p + e$. The bound $e \le (p+4)/3$ follows from $e \le (p+4d)/(4d-1)$, and the congruence from reducing (iii) modulo 4. For $p \ge 5$ we have $e \le (p+4)/3 < p$, so $p \nmid e$ and $p \nmid 4bd = p + e$. Hence the denominator $bd$ is coprime to $p$ and the other two are multiples of $p$: the solution is of type II. $\square$
 
 **Exhaustive procedure in $O(\sqrt p \log p)$, without factoring.** Let $S = \lfloor \sqrt p \rfloor$. There are two cases:
-- **If $e \le S$.** The numbers $K_e = (p+e)/4$, with $e \equiv 3 \pmod 4$, form a block of at most $\sqrt p / 4$ consecutive integers. We invert the loop: we run through the possible small divisors $q \le \sqrt{K_{\max}} \approx \sqrt p/2$ and, for each one, only through its multiples $K$ inside the block. For each $K$ we set $e = 4K - p$ and check whether $q$ or $K/q$ is $\equiv -1 \pmod e$. This suffices, because $\min(b, d) \le \sqrt{K_e}$. The cost is $\sum_{q \le \sqrt p/2} (1 + \sqrt p/(4q)) = O(\sqrt p \log p)$.
+- **If $e \le S$.** The numbers $K_e = (p+e)/4$, with $e \equiv 3 \pmod 4$, form a block of at most $\sqrt p / 4$ consecutive integers. We invert the loop: we run through the possible small divisors $q \le \sqrt{K_{\max}}$, with $K_{\max} = (p+S)/4$, and, for each one, only through its multiples $K$ inside the block. For each $K$ we set $e = 4K - p$ and check whether $q$ or $K/q$ is $\equiv -1 \pmod e$. This suffices, because $\min(b, d) \le \sqrt{K_e}$. The cost is $\sum_{q \le \sqrt{K_{\max}}} (1 + S/(4q)) = O(\sqrt p \log p)$. The bound $\sqrt{K_{\max}}$ cannot be replaced by $\sqrt p/2$: for $p = 1153$ the only pair $(b, e)$ is $(17, 3)$, with $K_3 = 17^2$ and $\sqrt{1153}/2 < 17$.
 - **If $e > S$.** Dividing (iii) by $e$ and using $e \ge 3$ and $c \ge 1$, we get $\tfrac83\,cd - 1 < \sqrt p$, that is, $cd \le \lfloor 3(S+2)/8 \rfloor$. There are $O(\sqrt p \log p)$ such pairs $(c, d)$, and for each one it suffices to check whether $(4cd-1) \mid p + 4d$.
 
 No solution is missed, and there are no false positives. We validated this against the brute-force search $e \le (p+4)/3$ on the 2212 primes $p \equiv 1 \pmod{24}$ below $2\cdot10^5$, with 0 discrepancies.
@@ -98,12 +98,12 @@ We obtained this with two independent implementations. Each uses its own filteri
 | 66529 | $1/17060 + 1/665290 + 1/226996948$ | $1/17038 + 1/698558 + 1/3319597513$ |
 
 **Comparison and corollary.**
-- The column $a = 1$ has 14 exceptions below $5\cdot 10^9$, Dahan's "wild" primes (Prop. 3.8). The two exceptional sets are **disjoint**, so the union of the row $u = 1$ and the column $a = 1$ covers every $p \equiv 1 \pmod{24}$ below $10^9$.
+- The column $a = 1$ has 14 exceptions below $5\cdot 10^9$ (Dahan, Prop. 3.8; as he notes, the first nine are the "wild" primes of Xu). The two exceptional sets are **disjoint**, so the union of the row $u = 1$ and the column $a = 1$ covers every $p \equiv 1 \pmod{24}$ below $10^9$.
 - Since Dahan's Theorem 4.3 holds for every finite set $P$ of coprime pairs, taking $P = \{(1, a) : a \le J\}$ shows that the number of exceptions of the row $u = 1$ up to $N$ is $\ll_A N(\log N)^{-A}$ for every $A$. This is a density bound, not a finiteness statement. Whether the set is finite is an open question, and the data suggest it is.
 
 ## 4. Complementary elementary observations
 
-For $p$ prime in the six hard classes (in particular $p \equiv 1 \pmod{24}$), with the condition on $x = K_c$:
+For $p$ prime in the six hard classes (in particular $p \equiv 1 \pmod{24}$), with the condition on $x = K_c$ (the characterizations by prime factors at $c = 3$ and $c = 7$ are also Theorem 2.9(b) of Dahan's companion paper, arXiv:2611.08717):
 - **$c = 3$:** there is a solution $\iff$ $K_3$ has a prime factor $\equiv 2 \pmod 3$. Types I and II exist or fail together. The "fails" direction is in Dahan, Thm. 4.8(a).
 - **$c = 7$:** since $2 \mid K_7$, there is type I $\iff$ there is type II $\iff$ $K_7$ has a prime factor that is a non-residue modulo 7.
 - **$c = 15$:** there is type I $\iff$ there is type II $\iff$ $K_{15}$ has a prime factor with Jacobi symbol $(q/15) = -1$.
@@ -124,30 +124,29 @@ $$\#\{n \le N \text{ prime, blind at } c\} \asymp_c \frac{N}{(\log N)^{3/2}}.$$
 
 *Proof (sketch).*
 
-**Lower bound.** It is a corollary of Theorem 1.1 of Fuchs, Hsu, Rickards, Schindler and Stange [FHRSS], which gives $\gg N(\log N)^{-3/2}$ primes primitively represented by $B\,Q(x,y) + A$, with $A = -c$. Let $c_0$ be the squarefree part of $c$; then $c_0 \equiv c \pmod 8$. We choose a form $Q$ of discriminant $-c_0$ and a value of $B$ according to the class of $c_0$ modulo 24:
+**Lower bound.** It is a corollary of Theorem 1.1 of Fuchs, Hsu, Rickards, Schindler and Stange [FHRSS], which gives $\gg N(\log N)^{-3/2}$ primes primitively represented by $B\,Q(x,y) + A$, with $A = -c$. Write $c = c_0 f^2$ with $c_0$ squarefree; then $c_0 \equiv c \pmod 8$, and $c_0 \equiv c \pmod 3$ when $3 \nmid c$. We choose a form $Q$ of discriminant $-c_0$ and a value of $B$ according to the class of $c$ modulo 3 and modulo 8:
 
-| class | $Q$ | $B$ |
-|---|---|---|
-| $c_0 = 3$ | $x^2 + xy + y^2$ | 4 |
-| $c_0 \equiv 19$ | $x^2 + xy + \frac{c_0+1}{4}y^2$ | 4 |
-| $c_0 \equiv 11$ | $3u^2 + uv + \frac{c_0+1}{12}v^2$ | 12 |
-| $c_0 \equiv 7$ | $x^2 + xy + \frac{c_0+1}{4}y^2$ | 16 |
-| $c_0 \equiv 23$ | $3u^2 + uv + \frac{c_0+1}{12}v^2$ | 48 |
+| case | $c \bmod 3$ | $c \bmod 8$ | $Q$ | $B$ |
+|---|---|---|---|---|
+| (I) | $0$ or $1$ | $3$ | $x^2 + xy + \frac{c_0+1}{4}y^2$ | 4 |
+| (I) | $0$ or $1$ | $7$ | $x^2 + xy + \frac{c_0+1}{4}y^2$ | 16 |
+| (II) | $2$ | $3$ | $3u^2 + uv + \frac{c_0+1}{12}v^2$ | 12 |
+| (II) | $2$ | $7$ | $3u^2 + uv + \frac{c_0+1}{12}v^2$ | 48 |
 
-If $3 \mid c$ but $3 \nmid c_0$, part (2) of the theorem is used with modulus 3. In each case its hypotheses are checked: $(a, 2D) = 1$, $\gcd(A, B) = 1$, and $2 \mid AB$ or $D \not\equiv 5 \pmod 8$. Every prime obtained this way satisfies $n \equiv 1 \pmod{24}$, and all the prime factors of $K_c$ lie in the kernel of the odd character $\chi_{c_0}$. By Dahan (Prop. 4.9), this blocks both branches.
+For $c = 3$ this is $Q = x^2 + xy + y^2$ and $B = 4$. In case (II), $c_0 \equiv c \equiv 2 \pmod 3$, so $12 \mid c_0 + 1$. If $3 \mid c$ but $3 \nmid c_0$ (case (I)), part (2) of the theorem is used with modulus 3 and $\ell = 1$, to impose $n \equiv 1 \pmod 3$. In each case its hypotheses are checked: $(a, 2D) = 1$, $\gcd(A, B) = 1$, and $2 \mid AB$ or $D \not\equiv 5 \pmod 8$. Every prime obtained this way satisfies $n \equiv 1 \pmod{24}$, and all the prime factors of $K_c$ lie in the kernel of the odd character $\chi_{c_0}$. By Dahan (Prop. 4.9), this blocks both branches.
 
-**The case $c = 3$.** The key is to use $x^2 + xy + y^2$, of discriminant $-3$, instead of Dahan's $U^2 + 3V^2$. Since $-3 \equiv 5 \pmod 8$, 2 is inert in $\mathbb Z[\omega]$ and **all primitive values are odd**, so no parity selection is needed. The primes blind at $c = 3$ are *exactly* the primes of the form $4(x^2+xy+y^2) - 3$ with $\gcd(x, y) = 1$. Up to $10^9$ there are 2 399 781 of them, and the ratio to $N(\log N)^{-3/2}$ stays between 0.235 and 0.226.
+**The case $c = 3$.** The key is to use $x^2 + xy + y^2$, of discriminant $-3$, instead of Dahan's $U^2 + 3V^2$. Since $-3 \equiv 5 \pmod 8$, 2 is inert in $\mathbb Z[\omega]$ and **all primitive values are odd**, so no parity selection is needed. The primes blind at $c = 3$ are *exactly* the primes of the form $4(x^2+xy+y^2) - 3$ with $\gcd(x, y) = 1$. Up to $10^9$ there are 2 399 781 of them. At $N = 10^4, 10^5, \dots, 10^9$ the ratio to $N(\log N)^{-3/2}$ lies between 0.226 and 0.237 (its maximum, 0.2367, is at $N = 10^5$).
 
 **Upper bound.** If there is no type II solution, the residues modulo $c$ of the prime factors of $K_c$, together with 1, contain no pair $\{x, -x\}$. Hence $K_c$ avoids at least $\varphi(c)/2$ classes, and an upper sieve of dimension $1/2$ (as in Dahan, Prop. 4.14), summed over the finitely many possible cases, gives $\ll_c N(\log N)^{-3/2}$. $\square$
 
-**Numerical check.** Two independent implementations agree: up to $10^9$ with $c \in \{3, 7, 11, 19, 23, 31, 43, 15, 27, 35, 63, 99\}$, and up to $10^7$ with $c \in \{3, 7, 11, 19, 23\}$. For $c = 7$ Dahan's numbers are reproduced (18 732 and 9 590 up to $10^7$).
+**Numerical check.** One implementation checked the theorem up to $10^9$ with $c \in \{3, 7, 11, 19, 23, 31, 43, 15, 27, 35, 63, 99\}$, and an independent one up to $10^7$ with $c \in \{3, 7, 11, 19, 23\}$; on the common range the counts agree. For $c = 7$ Dahan's numbers are reproduced (18 732 and 9 590 up to $10^7$).
 
 **The frontier: blind at $c = 3$ and at $c = 7$ simultaneously.** This is equivalent to $m(p) \ge 11$. Up to $10^5$ there are 131 such primes, but it is not known how to prove that there are infinitely many.
 - There is no linear two-parameter family producing them. The quaternary form $b\,g_7 - a\,g_3$ has determinant $21 \cdot \square$, which is not a square, and hence Witt index $\le 1$.
 - There is a one-parameter family: $(u, v) = (t+5, 19)$ in $u^2+uv+2v^2$ and $(x, y) = (t, 29)$ in $x^2+xy+y^2$ differ by exactly 1. This gives
 $$p(t) = 4t^2 + 116t + 3361 = (2t+29)^2 + 2520,$$
-and whenever $p(t)$ is prime (with $\gcd(t, 29) = \gcd(t+5, 19) = 1$) it is blind at $c = 3$ and at $c = 7$.
-- **Conditional corollary.** *If Bunyakovsky's conjecture holds for $4t^2 + 116t + 3361$, there are infinitely many primes $p$ with $m(p) \ge 11$.*
+and whenever $p(t)$ is prime with $\gcd(t, 29) = \gcd(t+5, 19) = 1$, it is blind at $c = 3$ and at $c = 7$.
+- **Conditional corollary.** Taking $t = 551s + 1$ ($551 = 19 \cdot 29$) makes both coprimality conditions automatic, and gives $p(551s+1) = 1214404\,s^2 + 68324\,s + 3481$. This polynomial is irreducible, has coprime coefficients and only odd values, so it has no fixed prime divisor. *If Bunyakovsky's conjecture holds for $1214404\,s^2 + 68324\,s + 3481$, there are infinitely many primes $p$ with $m(p) \ge 11$.* (Bunyakovsky's conjecture for $4t^2 + 116t + 3361$ alone would not suffice: it does not say that infinitely many of its prime values have $\gcd(t, 29) = \gcd(t+5, 19) = 1$.)
 
 ### 5.1. Is $m(p)$ bounded? Conditional results
 
@@ -159,16 +158,18 @@ Let $m(p) = 4x_{\min}(p) - p$ be the first shift that works for $p$. If $m(p)$ w
 $$K_{4j-1} = j \cdot q_j(t), \qquad q_j(t) = 1 + \tfrac{L}{4j}\,t \quad (1 \le j \le J),$$
 and if $p, q_1, \dots, q_J$ are all prime, then $m(p) > 4J - 1$. The $(J+1)$-tuple is admissible, so **Dickson's conjecture implies that $m(p)$ is unbounded**. We have not found this statement in the literature.
 
-*Explicit examples:* with $J = 9$ (ten simultaneous prime forms), $p = 2\,706\,777\,030\,078\,416\,655\,361$ has $m(p) = 59$ exactly. Over all the searches, Bateman–Horn predicts 30.75 tuples and 29 were found.
+The proof only uses three properties of $L$: $8 \mid L$; every odd prime factor of every $j \le J$ divides $L$; and every prime factor of $4j - 1$ divides $L/(4j)$. Any such $L$ for which the tuple is admissible works.
+
+*Explicit examples:* with $J = 9$ (ten simultaneous prime forms) we use the smaller modulus $L = 1\,991\,773\,143\,360$, which is the $L$ above divided by $1015 = 5 \cdot 7 \cdot 29$ and still has the three properties. With $t = 1\,358\,978\,576$, $p = 2\,706\,777\,030\,078\,416\,655\,361$ has $m(p) = 59$ exactly. Over all the searches, Bateman–Horn predicts 30.75 tuples and 29 were found.
 
 **With a single quadratic (Bunyakovsky):**
-- $m(p) \ge 11$ with $4t^2 + 116t + 3361$ (§5).
+- $m(p) \ge 11$ with $1214404\,s^2 + 68324\,s + 3481$ (§5).
 - $m(p) \ge 15$ for $c = 3, 7, 11$ simultaneously. The corresponding genus-1 curve is birational to $E_{231} : y^2 = x^3 - 231^2 x$, which has rank $\ge 1$ (the point $P_0 = (-63, 1764)$ has infinite order). The point $5P_0$ has a denominator $D$ all of whose prime factors are $\equiv 1 \pmod 3$, and this allows us to build an explicit quadratic polynomial $P(u)$, irreducible and without fixed prime divisors, all of whose prime values have $m(p) \ge 15$. For example, $P(0)$ is a 120-digit prime. The checked certificate is in `data/e231_certificate.json`.
 - For $c = 3, \dots, 15$ the curve has genus 5: by Faltings, it has only finitely many rational points.
 
 **Unconditionally**, it is not even known that there are infinitely many primes with $m(p) \ge 11$. It would require a sieve of dimension 1 over primes, which runs into the parity barrier. The closest result in the literature is Nath–Xie (2026): primes with $p - 1$ a sum of two squares and $p + 2$ with at most 9 prime factors.
 
-**Records.** We computed the exact $m(p)$ for the 128 671 219 hard primes up to $10^{11}$; up to $10^{10}$, with two independent implementations. The record is still $m = 107$ ($p = 8\,803\,369$), followed by $m = 103$ ($p = 45\,195\,081\,409$) and $m = 99$ ($p = 92\,159\,707\,201$). All values $3 \le m \le 107$ already occur.
+**Records.** We computed the exact $m(p)$ for the 128 671 219 hard primes up to $10^{11}$. Up to $10^{10}$ two independent implementations agree on every prime; above $10^{10}$ the second implementation recomputed $m = 103$, $99$ and $95$ at $p = 45\,195\,081\,409$, $92\,159\,707\,201$ and $18\,483\,104\,929$. The record is still $m = 107$ ($p = 8\,803\,369$), followed by $m = 103$ ($p = 45\,195\,081\,409$) and $m = 99$ ($p = 92\,159\,707\,201$). All values $3 \le m \le 107$ already occur.
 
 ## 6. Observation: the numerator barrier
 
@@ -191,14 +192,15 @@ Odd squares have no solutions of type I or of type II, and for a prime these are
 
 **Starting data ($p \le 2\cdot10^5$).** The number of solutions of $4/p$ clearly decreases as $q_{\min}(p)$ grows. In the class $p \equiv 1 \pmod{24}$, the mean of $f_4(p)/(\log p)^3$ is $0.498$, $0.411$, $0.343$, $0.306$, $0.280$, $0.257$ and $0.248$ for $q_{\min} = 5, 7, 11, 13, 17, 19, 23$.
 
-**Search.** We take three families with $Y \in \{47, 53, \dots, 101\}$ and $p$ between $10^{19}$ and $10^{43}$:
-- the primes $p \equiv 1 \pmod{L(Y)}$, with $L(Y) = 8\prod_{3 \le q \le Y} q$;
-- primes with random quadratic residues modulo each $q \le Y$;
-- a control group of random hard primes of the same size.
+**Search.** For each $Y \in \{47, 53, \dots, 101\}$ (12 values), with $p$ between $10^{19}$ and $10^{43}$, we take three families of almost-square primes and a control group:
+- the first 40 primes $p \equiv 1 \pmod{L(Y)}$, with $L(Y) = 8\prod_{3 \le q \le Y} q$ (480 in total);
+- 40 primes $p \equiv 1 \pmod{24}$ with a random quadratic residue $\ne 1$ modulo each prime $5 \le q \le Y$ (480);
+- among the first 300 primes $p \equiv 1 \pmod{L(Y)}$, the 15 with the smallest local factor of the Poisson model below (180; 20 of them are also in the first family);
+- a control group of 40 random hard primes of the same size (480).
 
-That makes 1620 primes in total. For each one we look for a solution using a partial factorization of the $K_c$, so the $m$ obtained is an upper bound for $m(p)$.
+That makes 1620 searches on 1600 distinct primes, 1120 of them almost squares. For each one we look for a solution using a partial factorization of the $K_c$, so the $m$ obtained is an upper bound for $m(p)$.
 
-**Result.** All 1620 have a solution, and every triple is checked in exact integer arithmetic. The adversarial families are clearly harder. With the exact $m(p)$, the family $p \equiv 1 \pmod{L(47)}$ (its first 100 primes, of about 20 digits) gives:
+**Result.** All 1600 primes have a solution, and every triple is checked in exact integer arithmetic. The adversarial families are clearly harder. With the exact $m(p)$, the family $p \equiv 1 \pmod{L(47)}$ (its first 100 primes, of about 20 digits) gives:
 
 | | mean of $m$ | $P(m > 11)$ | $P(m > 23)$ | max. |
 |---|---:|---:|---:|---:|
@@ -232,16 +234,27 @@ Timings on an Intel i7-11370H (8 threads):
 
 ## 9. Limitations
 
-Everything above is numerical verification up to the stated bounds, except for the lemmas and theorems, which come with their proofs. Every numerical result was computed twice, with independent implementations, and the citations were checked against the original texts. Any remaining errors are the author's responsibility.
+Everything above is numerical verification up to the stated bounds, except for the lemmas and theorems, which come with their proofs. The numerical results were computed with two independent implementations, except where the text says that the second one was run only on samples: the range $(10^{10}, 10^{11})$ of the records and the search of §7. The citations were checked against the original texts. Any remaining errors are the author's responsibility.
+
+## Changes in version 1.2.0
+
+- §5: the table of forms now covers every $c \equiv 3 \pmod 4$. Version 1.1.0 listed only $c_0 = 3$ among the classes with $3 \mid c_0$ (it missed $c_0 \equiv 3, 15 \pmod{24}$). It also prescribed $B = 12$ or $48$ when $3 \mid c$ and $c_0 \equiv 2 \pmod 3$, which violates $\gcd(A, B) = 1$; the correct choice is case (I). The scripts already used the correct rule (for example $4(x^2 + xy + 3y^2) - 99$ for $c = 99$), so no number changes.
+- §5: the conditional corollary for $m(p) \ge 11$ now uses $1214404\,s^2 + 68324\,s + 3481 = p(551s + 1)$, which builds in the coprimality conditions. Bunyakovsky's conjecture for $p(t)$ alone does not give them.
+- §5: the ratio for $c = 3$ is between 0.226 and 0.237 (version 1.1.0 said 0.235).
+- §3: the divisor bound of the exhaustive procedure is $\sqrt{(p+S)/4}$; $\sqrt p/2$ is not enough. The code always used the correct bound, so the three exceptions do not change.
+- §5.1: the modulus of the $J = 9$ example is explained, and the scope of the second implementation is stated precisely.
+- §7: the search had four groups, not three; it covers 1600 distinct primes (1120 almost squares and 480 controls).
+- §3, §4 and references: Xu is credited for the "wild" primes, Dahan's companion paper is cited, and the bibliographic data are completed.
 
 ## References
 
 - B. Dahan, *Sieve dimension and search depth for the Erdős–Straus conjecture, $n \equiv 1 \pmod{24}$*, arXiv:2608.24035 (v2, Nov. 2026).
-- C. Elsholtz, T. Tao, *Counting the number of solutions to the Erdős–Straus equation on unit fractions*, J. Aust. Math. Soc. 94 (2013); arXiv:1107.1010.
+- B. Dahan, *Composite witness sieves, Kneser–Plancherel containers, and the exponent 5/7 for the Erdős–Straus conjecture*, arXiv:2611.08717 (2026).
+- C. Elsholtz, T. Tao, *Counting the number of solutions to the Erdős–Straus equation on unit fractions*, J. Aust. Math. Soc. 94 (2013), 50–105; arXiv:1107.1010.
 - S. E. Salez, *The Erdős–Straus conjecture: new modular equations and checking up to $N = 10^{17}$*, arXiv:1406.6307 (2014).
 - S. Mihnea, B. C. Dumitru, *Further verification and empirical evidence for the Erdős–Straus conjecture*, arXiv:2509.00128 (2025).
-- R. C. Vaughan, *On a problem of Erdős, Straus and Schinzel*, Mathematika 17 (1970).
-- C. Pomerance, A. Weingartner, *Exceptions to the Erdős–Straus–Schinzel conjecture*, arXiv:2511.16817.
+- R. C. Vaughan, *On a problem of Erdős, Straus and Schinzel*, Mathematika 17 (1970), 193–198.
+- C. Pomerance, A. Weingartner, *Exceptions to the Erdős–Straus–Schinzel conjecture*, arXiv:2511.16817 (2025).
 - E. Fuchs, C. Hsu, J. Rickards, D. Schindler, K. E. Stange, *Primes represented by shifted quadratic forms: on primitivity and congruence classes*, arXiv:2504.20289 (2025). [FHRSS]
-- K. Nath, L. Xie, *Almost primes and primes that are sums of two squares plus one*, Acta Arith. (2026); arXiv:2501.16723.
-- M. Bright, D. Loughran, *Brauer–Manin obstruction for Erdős–Straus surfaces*, Bull. London Math. Soc. 52 (2020); arXiv:1908.02526.
+- K. Nath, L. Xie, *Almost primes and primes that are sums of two squares plus 1*, Acta Arith. (2026), doi:10.4064/aa250227-19-11; arXiv:2501.16723.
+- M. Bright, D. Loughran, *Brauer–Manin obstruction for Erdős–Straus surfaces*, Bull. London Math. Soc. 52 (2020), 746–761; arXiv:1908.02526.

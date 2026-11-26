@@ -26,7 +26,7 @@ Everything is in the note [`note/erdos_straus_note.md`](note/erdos_straus_note.m
 4. **Aigner's slice (§3):** its only exceptions with `p ≡ 1 (mod 24)` and `p < 10^9` are 193, 2521 and 66529, decided with an exhaustive algorithm of cost `O(√p log p)`.
 5. **Local criteria (§4), Bright–Loughran and the numerator barrier (§6), and a targeted search above `10^18` (§7).**
 
-Every numerical result was computed with two independent implementations: one with Numba (`code/numba/`) and another with sympy (`code/verification/`).
+The numerical results were computed with two independent implementations: one with Numba (`code/numba/`) and another with sympy (`code/verification/`). The exceptions are the records between `10^10` and `10^11` and the search above `10^18`, where the second implementation was run only on samples (see the note).
 
 ## Reproduce
 
