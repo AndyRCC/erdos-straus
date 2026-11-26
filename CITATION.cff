@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Erdős–Straus conjecture: blind shifts, conditional results and computations"
+authors:
+  - family-names: "Casafranca"
+    given-names: "Andy"
+version: "1.0.0"
+date-released: "2026-11-26"
+repository-code: "https://github.com/AndyRCC/erdos-straus"
+license: "MIT"
+abstract: >-
+  Notes on the (still open) Erdős–Straus conjecture 4/n = 1/x + 1/y + 1/z.
+  Theorem: for every c ≡ 3 (mod 4), the number of primes n ≤ N for which the
+  shift c fails (no Type I or Type II solution with first denominator
+  x = (n+c)/4) is ≍ N(log N)^(-3/2). This extends Dahan's Theorem 4.15 (c = 7,
+  arXiv:2608.24035) and settles the case c = 3; it follows from
+  Fuchs–Hsu–Rickards–Schindler–Stange (arXiv:2504.20289) applied to the form of
+  discriminant −3. Conditional results: Dickson's prime k-tuples conjecture
+  implies that the first working shift m(p) is unbounded, and Bunyakovsky's
+  conjecture for one explicit quadratic, built from the congruent-number curve
+  y² = x³ − 231²x, implies m(p) ≥ 15 infinitely often. Computations: Dahan's
+  sieve experiments replicated and extended to 10^9; the three exceptions
+  (193, 2521, 66529) of the Aigner Type II slice with a = 1 below 10^9; m(p)
+  computed exactly for all 128 671 219 hard primes below 10^11; a targeted
+  search above 10^18. The note is in Spanish. This is not a proof of the
+  conjecture. Code under MIT; note and data under CC BY 4.0.
+keywords:
+  - "Erdős–Straus conjecture"
+  - "Egyptian fractions"
+  - "number theory"
+  - "sieve methods"
+  - "quadratic forms"
+  - "reproducibility"
