@@ -4,7 +4,7 @@ title: "Erdős–Straus conjecture: blind shifts, conditional results and comput
 authors:
   - family-names: "Casafranca"
     given-names: "Andy"
-version: "1.0.0"
+version: "1.1.0"
 doi: "10.5281/zenodo.24569380"
 date-released: "2026-11-26"
 repository-code: "https://github.com/AndyRCC/erdos-straus"
