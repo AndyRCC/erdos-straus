@@ -1,0 +1,17 @@
+# Papers de terceros: se enlazan (ver referencias/README.md), no se redistribuyen
+referencias/*.pdf
+referencias/texto/
+
+# Cachés de Python y de Numba
+__pycache__/
+*.py[cod]
+*.nbi
+*.nbc
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
