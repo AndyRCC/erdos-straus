@@ -1,63 +1,64 @@
-# Erdős–Straus: conjuntos ciegos y exploración computacional
+# Erdős–Straus: blind sets and computational exploration
 
-**Andy Casafranca** · noviembre de 2026
+**Andy Casafranca** · November 2026
 
 [![DOI](https://zenodo.org/badge/github/1473563897.svg)](https://doi.org/10.5281/zenodo.24569380)
 
-> **English summary.** Notes on the (still open) Erdős–Straus conjecture 4/n = 1/x + 1/y + 1/z.
+**The conjecture (1948):** for every `n ≥ 2` there are positive integers `x, y, z` with `4/n = 1/x + 1/y + 1/z`. It is still open and has been verified up to `10^18`. This repository does **not** prove it.
+
+## Summary
+
 > **Theorem.** For every c ≡ 3 (mod 4), the number of primes n ≤ N for which the shift c fails (no Type I or Type II solution with first denominator x = (n+c)/4) is ≍ N(log N)^{−3/2}. This extends Dahan's Theorem 4.15 (c = 7, arXiv:2608.24035) and settles the case c = 3, which was left open. It follows from Fuchs–Hsu–Rickards–Schindler–Stange (arXiv:2504.20289) applied to the form of discriminant −3.
 > **Conditional results.** Dickson's prime k-tuples conjecture implies that the first working shift m(p) is unbounded. Bunyakovsky's conjecture for a single explicit quadratic implies m(p) ≥ 15 infinitely often; that quadratic is built from the congruent-number curve y² = x³ − 231²x.
 > **Computations.** We replicate and extend to 10⁹ Dahan's sieve experiments. The Aigner Type II slice with a = 1 has exactly three exceptions below 10⁹ (193, 2521 and 66529). We compute m(p) exactly for all 128 671 219 "hard" primes below 10¹¹. We also run a targeted search above 10¹⁸ among primes that mimic squares.
-> **This is not a proof of the conjecture.** Details are in [`nota/nota_erdos_straus.md`](nota/nota_erdos_straus.md) (in Spanish).
+> **This is not a proof of the conjecture.** Details are in [`note/erdos_straus_note.md`](note/erdos_straus_note.md).
 
-**La conjetura (1948):** para todo `n ≥ 2` existen enteros positivos `x, y, z` con `4/n = 1/x + 1/y + 1/z`. Sigue abierta y está verificada hasta `10^18`. Este repositorio **no** la demuestra.
+## Results
 
-## Resultados
+Everything is in the note [`note/erdos_straus_note.md`](note/erdos_straus_note.md):
 
-Todo está en la nota [`nota/nota_erdos_straus.md`](nota/nota_erdos_straus.md):
+1. **Theorem (§5).** For every `c ≡ 3 (mod 4)`, the primes at which the shift `c` fails number `≍ N(log N)^{−3/2}`. This generalizes Dahan's Theorem 4.15 (c = 7) and settles the case `c = 3`.
+2. **Is m(p) bounded? (§5.1)**
+   - If Dickson's conjecture is true, `m(p)` is unbounded: no finite set of shifts works for every prime.
+   - If Bunyakovsky's conjecture holds for a single quadratic, there are infinitely many primes with `m(p) ≥ 11`, or with `m(p) ≥ 15` using the curve E₂₃₁.
+   - Up to `10^11` the record is `m(p) = 107`.
+3. **Dahan's experiments (§2):** replicated exactly and extended from `2·10^7` to `10^9`.
+4. **Aigner's slice (§3):** its only exceptions with `p ≡ 1 (mod 24)` and `p < 10^9` are 193, 2521 and 66529, decided with an exhaustive algorithm of cost `O(√p log p)`.
+5. **Local criteria (§4), Bright–Loughran and the numerator barrier (§6), and a targeted search above `10^18` (§7).**
 
-1. **Teorema (§5).** Para todo `c ≡ 3 (mod 4)`, los primos en los que falla el desplazamiento `c` son `≍ N(log N)^{−3/2}`. Generaliza el Teorema 4.15 de Dahan (c = 7) y cierra el caso `c = 3`.
-2. **¿Está acotado m(p)? (§5.1)**
-   - Si la conjetura de Dickson es cierta, `m(p)` no está acotado: ningún número finito de desplazamientos basta para todos los primos.
-   - Si la de Bunyakovsky vale para una sola cuadrática, hay infinitos primos con `m(p) ≥ 11`, o con `m(p) ≥ 15` usando la curva E₂₃₁.
-   - Hasta `10^11` el récord es `m(p) = 107`.
-3. **Experimentos de Dahan (§2):** replicados exactamente y ampliados de `2·10^7` a `10^9`.
-4. **Corte de Aigner (§3):** sus únicas excepciones con `p ≡ 1 (mod 24)` y `p < 10^9` son 193, 2521 y 66529, decididas con un algoritmo exhaustivo de coste `O(√p log p)`.
-5. **Criterios locales (§4), Bright–Loughran y la barrera del numerador (§6), y búsqueda dirigida por encima de `10^18` (§7).**
+Every numerical result was computed with two independent implementations: one with Numba (`code/numba/`) and another with sympy (`code/verification/`).
 
-Cada resultado numérico se calculó con dos implementaciones independientes: una con Numba (`codigo/numba/`) y otra con sympy (`codigo/verificacion/`).
-
-## Reproducir
+## Reproduce
 
 ```
 pip install -r requirements.txt
-python herramientas/verificar.py conocidas        # autotest: identidades clásicas y de Mordell
-python herramientas/verificar.py mod840           # las 6 clases difíciles módulo 840 y su cobertura
-python herramientas/verificar.py perfil 8803369   # m(p) y qué tipos de solución existen
-python codigo/verificacion/verif_ciegos.py        # teorema de §5, comprobado hasta 10^7
-python codigo/verificacion/verif_m_no_acotado.py  # §5.1: certificado E_231, primos de Dickson y récords
-python herramientas/descargar_referencias.py      # opcional: descarga los PDFs citados
+python tools/verify.py known                     # self-test: classical and Mordell identities
+python tools/verify.py mod840                    # the 6 hard classes modulo 840 and their coverage
+python tools/verify.py profile 8803369           # m(p) and which solution types exist
+python code/verification/check_blind.py          # theorem of §5, checked up to 10^7
+python code/verification/check_m_unbounded.py    # §5.1: E_231 certificate, Dickson primes and records
+python tools/download_references.py              # optional: downloads the cited PDFs
 ```
 
-Los scripts se ejecutan desde la raíz del repositorio. La tabla de la nota, §8, indica qué script reproduce cada resultado.
+Run the scripts from the root of the repository. The table in §8 of the note says which script reproduces each result.
 
-## Estructura
+## Layout
 
 ```
-nota/                  la nota con todos los resultados
-herramientas/          verificador exacto (verificar.py) y descarga de referencias
-codigo/numba/          cálculos grandes (criba segmentada con Numba)
-codigo/verificacion/   comprobaciones independientes (sympy y numpy)
-datos/                 tablas agregadas, gráficos y el certificado de E_231
-referencias/README.md  bibliografía con enlaces (los PDFs no se incluyen)
+note/                  the note with all the results
+tools/                 exact verifier (verify.py) and reference downloader
+code/numba/            large computations (segmented sieves with Numba)
+code/verification/     independent checks (sympy and numpy)
+data/                  aggregated tables, plots and the E_231 certificate
+references/README.md   bibliography with links (the PDFs are not included)
 ```
 
-## Cómo citar
+## How to cite
 
-Andy Casafranca (2026). *Erdős–Straus conjecture: blind shifts, conditional results and computations* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.24569380
+Andy Casafranca (2026). *Erdős–Straus conjecture: blind shifts, conditional results and computations*. Zenodo. https://doi.org/10.5281/zenodo.24569380
 
-Los metadatos están en [`CITATION.cff`](CITATION.cff).
+The metadata are in [`CITATION.cff`](CITATION.cff).
 
-## Licencia
+## Licence
 
-El código está bajo licencia MIT, y la nota y los datos bajo CC BY 4.0 (ver [`LICENSE`](LICENSE)). Los artículos citados pertenecen a sus autores y no se redistribuyen.
+The code is under the MIT licence, and the note and the data are under CC BY 4.0 (see [`LICENSE`](LICENSE)). The cited papers belong to their authors and are not redistributed.

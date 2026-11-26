@@ -1,14 +1,14 @@
-# Papers de terceros: se enlazan (ver referencias/README.md), no se redistribuyen
-referencias/*.pdf
-referencias/texto/
+# Third-party papers: linked (see references/README.md), not redistributed
+references/*.pdf
+references/text/
 
-# Cachés de Python y de Numba
+# Python and Numba caches
 __pycache__/
 *.py[cod]
 *.nbi
 *.nbc
 
-# Sistema operativo y editores
+# Operating system and editors
 .DS_Store
 Thumbs.db
 desktop.ini

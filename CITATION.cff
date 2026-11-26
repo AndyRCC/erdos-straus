@@ -23,8 +23,7 @@ abstract: >-
   sieve experiments replicated and extended to 10^9; the three exceptions
   (193, 2521, 66529) of the Aigner Type II slice with a = 1 below 10^9; m(p)
   computed exactly for all 128 671 219 hard primes below 10^11; a targeted
-  search above 10^18. The note is in Spanish. This is not a proof of the
-  conjecture. Code under MIT; note and data under CC BY 4.0.
+  search above 10^18. This is not a proof of the conjecture. Code under MIT; note and data under CC BY 4.0.
 keywords:
   - "Erdős–Straus conjecture"
   - "Egyptian fractions"

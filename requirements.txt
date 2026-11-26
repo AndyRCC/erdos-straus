@@ -1,12 +1,12 @@
-# Núcleo: verificador exacto y scripts de codigo/verificacion/
+# Core: exact verifier and the scripts in code/verification/
 sympy>=1.14
 numpy>=2.0
-gmpy2>=2.1        # opcional: acelera sympy
+gmpy2>=2.1        # optional: speeds up sympy
 
-# Scripts de codigo/numba/ (criba segmentada compilada y gráficos)
+# Scripts in code/numba/ (compiled segmented sieves and plots)
 numba>=0.65
 matplotlib>=3.8
 pandas>=2.0
 
-# Solo para extraer el texto de los PDFs de referencias/
+# Only needed to extract the text of the PDFs in references/
 pypdf>=4.0
